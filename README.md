@@ -24,7 +24,7 @@ I discovered Anaconda: http://docs.continuum.io/anaconda/index.html
 - Cactus library
 ```
 git clone git://github.com/benedictpaten/sonLib.git
-git clone git://github.com/benedictpaten/cactus.git
+git clone git://github.com/benedictpaten/pinchesAndCacti.git
 ```
 
 - For the automated pipeline:
