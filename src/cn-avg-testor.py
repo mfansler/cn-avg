@@ -63,7 +63,7 @@ def _compareHistories(realHistory, sampledHistories):
 
 def testHistory(length, maxDepth, iterations):
 	"""Tests the efficiency of the CN-AVG pipeline on random evolutionary histories"""
-	realHistory = simulator.RandomWeightedHistory(length, maxDepth)
+	realHistory = simulator.RandomIntegerHistory(length, maxDepth)
 	sampledHistories = _sampleAVG(realHistory.avg(), iterations)
 	return "\t".join(map(str, _compareHistories(realHistory, sampledHistories)))
 

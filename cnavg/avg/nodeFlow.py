@@ -119,7 +119,7 @@ class NodeFlow(object):
 		""" 
 		Returns string with coverage stats (debugging purposes)
 		"""
-		return "%s\t%i\t%i\t%f\t%f\t" % (self.node.chr, self.node.pos, self.twin.pos) + "\t".join(map(self.segmentValue, range(2)))
+		return "%s\t%i\t%i\t" % (self.node.chr, self.node.pos, self.twin.pos) + "\t".join(map(self.segmentValue, range(2)))
 
 	def addEdge(self, node, flow):
 		"""

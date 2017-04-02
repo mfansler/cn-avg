@@ -238,7 +238,7 @@ def testGraph():
 	node = map(lambda X: graph.createNode("1", X * 50, X % 2 == 0), range(0, 10, 2))
 	node += map(lambda X: graph.createNode("1", (X+1) * 50 - 1, X % 2 == 0), range(1, 10, 2))
 	node.sort()
-	map(lambda X: graph.createSegment(node[X], node[X+1], [1]), range(0,10,2))
+	map(lambda X: graph.createSegment(node[X], node[X+1], [1,1]), range(0,10,2))
 	map(lambda X: graph.createAdjacency(node[X], node[X+1]), range(1,9,2))
 	graph.createAdjacency(node[0], node[-1])
 
