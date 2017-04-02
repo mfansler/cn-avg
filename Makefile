@@ -1,8 +1,8 @@
-PREFIX = /inside/home/dzerbino/.local
+PREFIX = ~/.local
 export BIN_DIR = ${PWD}/bin
 export LIB_DIR = ${PWD}/lib
-export SONLIB_DIR = /inside/home/dzerbino/utils/sonLib
-export PINCHES_DIR = /inside/home/dzerbino/utils/pinchesAndCacti
+export SONLIB_DIR = ${PWD}/../sonLib
+export PINCHES_DIR = ${PWD}/../pinchesAndCacti
 
 default:
 	mkdir -p ${BIN_DIR}
