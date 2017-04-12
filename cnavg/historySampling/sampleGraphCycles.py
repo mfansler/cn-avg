@@ -147,7 +147,7 @@ def chooseNewHistory(history, temperature, depth=0, index=0):
 			temperature *= 1.01
 			depth += 1
 
-def addNewHistory(histories, index, file=None, stats=None, braney=None, tree=None):
+def addNewHistory(histories, index, file=None, stats=None, braney=None, tree=None, dot=None):
 	# Just do not process if run time > MAX_TIMER_LENGTH
 	if time.time() > TIMER_END:
 		return histories
@@ -173,6 +173,8 @@ def addNewHistory(histories, index, file=None, stats=None, braney=None, tree=Non
 		braney.write("%s\n" % O.braneyText(index + 1, c))
 	if tree is not None:
 		tree.write("%s\n" % O.newick())
+        if dot is not None:
+                dot.write("%s\n" % O.dot())
 	if file is None: 
 		histories.append(newHistory)
 		return histories 
@@ -191,14 +193,14 @@ def addNewHistory(histories, index, file=None, stats=None, braney=None, tree=Non
 ## Master function
 ########################################
 
-def sample(cactusHistory, size, file=None, stats=None, braney=None, tree=None):
+def sample(cactusHistory, size, file=None, stats=None, braney=None, tree=None, dot=None):
 	# DEBUG
 	#cactusHistory.validate()
 	print 'Sampling history space of Cactus graph'
 	global TIMER_END
 	TIMER_END = time.time() + MAX_TIMER_LENGTH
 	print 'HISTORY ', 0, 0, len(cactusHistory.parent), cactusHistory.rearrangementCost(), cactusHistory.errorCost(), time.asctime()
-	res = reduce(lambda X, Y: addNewHistory(X, Y, file, stats, braney, tree), range(size), [cactusHistory])
+	res = reduce(lambda X, Y: addNewHistory(X, Y, file, stats, braney, tree, dot), range(size), [cactusHistory])
 	if file is not None:
 		pickle.dump(res[0], file)
 	return res

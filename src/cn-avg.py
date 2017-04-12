@@ -174,24 +174,28 @@ def main():
 			stats_file = open("HISTORY_STATS_%li" % options.index, "a")
 			pickle_file = open('HISTORIES_%i' % options.index, "ab")
 			braney_file = gzip.open("HISTORIES_%i.braney" % options.index, "a")
+                        dot_file = open("HISTORIES_%i.dot" % options.index, "a")
 		else:
 			stats_file = open("HISTORY_STATS_%li" % options.index, "w")
 			pickle_file = open('HISTORIES_%i' % options.index, "wb")
 			braney_file = gzip.open("HISTORIES_%i.braney" % options.index, "w")
+                        dot_file = open("HISTORIES_%i.dot" % options.index, "w")
 		stats_file.write("%s\n" % H.stats())
 		#pickle.dump(H, pickle_file)
 		braney_file.write("%s\n" % O.braneyText(0, H.rearrangementCost()))
-		#tree_file = open("HISTORY_TREES_%li" % options.index, "w")
+                dot_file.write("%s\n" % O.dot())
+                #tree_file = open("HISTORY_TREES_%li" % options.index, "w")
 		#tree_file.write("%s\n" % O.newick())
 		tree_file = None
 
 		# Sampling
-		SH = sampleGraphCycles.sample(H, options.size, pickle_file, stats_file, braney_file, tree_file)
+		SH = sampleGraphCycles.sample(H, options.size, pickle_file, stats_file, braney_file, tree_file, dot_file)
 
 		# Cleaning up
 		stats_file.close()
 		pickle_file.close()
 		braney_file.close()
+                dot_file.close()
 		#tree_file.close()
 
 		## Removing temp file
